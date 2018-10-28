@@ -20,7 +20,8 @@ public class Album {
             return false;
         }else{
             albumSongList.add(new Song(title, duration));
-            System.out.println("New song added to " + this.albumTitle + " album: " + title + " " + duration );
+            System.out.println("New song added to " + this.getArtistName() + " - " + this.albumTitle + " album: "
+                    + title + " " + duration );
             return true;
         }
     }
@@ -44,15 +45,17 @@ public class Album {
         }
     }
 
-    public void printAlbumSongList(){
+    public boolean printAlbumSongList(){
         System.out.println(albumTitle + " - " + artistName);
         if(!albumSongList.isEmpty()){
             for (int i = 0; i < albumSongList.size(); i++) {
                 System.out.println((i+1) + ". " + albumSongList.get(i).getTitle() + " "
                         + albumSongList.get(i).getDuration());
             }
+            return true;
         }else
             System.out.println("Album is empty");
+        return false;
     }
 
     public String getAlbumTitle() {

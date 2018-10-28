@@ -34,6 +34,16 @@ public class Album {
         return null;
     }
 
+    public Song findSong(int songNumber){
+        int index = songNumber - 1;
+        if(index >= 0 && index < albumSongList.size()){
+            return albumSongList.get(index);
+        }else{
+            System.out.println("Wrong number");
+            return null;
+        }
+    }
+
     public void printAlbumSongList(){
         System.out.println(albumTitle + " - " + artistName);
         if(!albumSongList.isEmpty()){

@@ -20,6 +20,38 @@ public class Menu {
                     System.out.println("Closing application...");
                     break;
                 case 1:
+                    albumMenu();
+                    break;
+                case 2:
+                    playList.addSongToAlbum();
+                    break;
+                case 3:
+                    playList.removeAlbum();
+                    break;
+                case 4:
+                    playList.addSongToPlaylist();
+                    break;
+                case 5:
+                    playList.printPlaylist();
+                    break;
+            }
+        }
+    }
+
+    public void albumMenu(){
+        boolean quit = false;
+        ;
+
+        while(!quit){
+            printAlbumMenu();
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch(choice){
+                case 0:
+                    quit = true; break;
+                case 1:
                     System.out.println("Enter artist name");
                     String artist = scanner.nextLine();
                     System.out.println("Enter Title");
@@ -27,23 +59,42 @@ public class Menu {
                     playList.createNewAlbum(artist, albumTitle);
                     break;
                 case 2:
-                    playList.addSongToAlbum();
-                    break;
+                    playList.addSongToAlbum(); break;
                 case 3:
-                    playList.addSongToPlaylist();
-                    break;
+                    playList.removeAlbum(); break;
                 case 4:
-                    playList.printPlaylist();
+                    if(playList.printAlbumList()) {
+                        System.out.println("Choose album");
+                        int albumChoice = scanner.nextInt();
+                        scanner.nextLine();
+                        Album album = playList.findAlbum(albumChoice);
+                        if(album != null){
+                            album.removeSong();
+                        }
+                    }
+                    break;
+
             }
         }
+
+    }
+
+    public void printAlbumMenu(){
+        System.out.println("\nPress\n" +
+                "0 - To return\n" +
+                "1 - To create new album\n" +
+                "2 - To add song to album\n" +
+                "3 - To remove album\n" +
+                "4 - To remove song from album\n");
     }
 
     public void printFirstMenu(){
         System.out.println("\nPress\n" +
-                "1 - To create new album\n" +
+                "1 - To enter album menu\n" +
                 "2 - To add song to album \n" +
-                "3 - To add song to playlist\n" +
-                "4 - To show playlist tracks\n" +
+                "3 - To remove album\n" +
+                "4 - To add song to playlist\n" +
+                "5 - To show playlist tracks\n" +
                 "0 - To quit\n" +
                 "Chose: ");
     }

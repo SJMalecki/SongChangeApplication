@@ -18,6 +18,21 @@ public class PlayList {
         this.userPlayList = new LinkedList<Song>();
     }
 
+    public boolean removeAlbum(){
+        if(printAlbumList()){
+            System.out.println("Chose album to remove: ");
+            int albumNumber = scanner.nextInt();
+            scanner.nextLine();
+            Album album = findAlbum(albumNumber);
+            if(album != null){
+                System.out.println("Removing " + album.getArtistName() + " " + album.getAlbumTitle());
+                albumList.remove(album);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean addSongToPlaylist() {
         if (printAlbumList()) {
             System.out.println("Chose album: ");

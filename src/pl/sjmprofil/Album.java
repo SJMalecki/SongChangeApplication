@@ -1,12 +1,15 @@
 package pl.sjmprofil;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Album {
 
     private String artistName;
     private String albumTitle;
     private ArrayList<Song> albumSongList;
+
+    private Scanner scanner = new Scanner(System.in);
 
     public Album(String artistName, String albumTitle){
         this.artistName = artistName;
@@ -24,6 +27,21 @@ public class Album {
                     + title + " " + duration );
             return true;
         }
+    }
+
+    public boolean removeSong(){
+        if(printAlbumSongList()){
+            System.out.println("Choose song to remove");
+            int songNumber = scanner.nextInt();
+            scanner.nextLine();
+            Song song = findSong(songNumber);
+            if(song != null){
+                System.out.println("Removing " + song.getTitle() + " " + song.getDuration());
+                albumSongList.remove(song);
+                return true;
+            }
+        }
+        return false;
     }
 
     public Song findSong(String title, double duration){

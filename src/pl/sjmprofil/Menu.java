@@ -109,9 +109,26 @@ public class Menu {
                         System.out.println("Now playing: " + listIterator.next().getTitle());
                     } else {
                         System.out.println("Reached end of list");
+                        goingForward = false;
                     }
                     break;
                 case 2:
+                    if (goingForward) {
+                        if (listIterator.hasPrevious()) {
+                            listIterator.previous();
+                        }
+                        goingForward = false;
+                    }
+
+                    if(listIterator.hasPrevious()){
+                        System.out.println("Now playing: " + listIterator.previous().getTitle());
+                    }else{
+                        System.out.println("Reached beginning of the list");
+                        goingForward = true;
+                    }
+                    break;
+                case 3:
+                    playList.printPlaylist();
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -152,7 +169,6 @@ public class Menu {
                 "1 - To go to next song\n" +
                 "2 - To go to previous song\n" +
                 "3 - To print playlist\n" +
-                "4 - To ...\n" +
                 "Chose: ");
     }
 

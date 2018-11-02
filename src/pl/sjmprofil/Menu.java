@@ -1,5 +1,6 @@
 package pl.sjmprofil;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Menu {
@@ -23,15 +24,9 @@ public class Menu {
                     albumMenu();
                     break;
                 case 2:
-                    playList.addSongToAlbum();
-                    break;
-                case 3:
-                    playList.removeAlbum();
-                    break;
-                case 4:
                     playList.addSongToPlaylist();
                     break;
-                case 5:
+                case 3:
                     playList.printPlaylist();
                     break;
             }
@@ -40,7 +35,6 @@ public class Menu {
 
     public void albumMenu(){
         boolean quit = false;
-        ;
 
         while(!quit){
             printAlbumMenu();
@@ -73,9 +67,13 @@ public class Menu {
                         }
                     }
                     break;
-
             }
         }
+    }
+
+    public void selectSong(){
+        Iterator<Song> iterator = playList.getUserPlayList().iterator();
+
 
     }
 
@@ -91,10 +89,8 @@ public class Menu {
     public void printFirstMenu(){
         System.out.println("\nPress\n" +
                 "1 - To enter album menu\n" +
-                "2 - To add song to album \n" +
-                "3 - To remove album\n" +
-                "4 - To add song to playlist\n" +
-                "5 - To show playlist tracks\n" +
+                "2 - To add song to playlist\n" +
+                "3 - To show playlist tracks\n" +
                 "0 - To quit\n" +
                 "Chose: ");
     }
@@ -113,7 +109,11 @@ public class Menu {
         playList.createNewAlbum("Lewis Hammilton", "Beat the time");
         playList.findAlbum(2).addSongToAlbum("Engine on", 1.56);
         playList.findAlbum(2).addSongToAlbum("Fuel vapors", 3.21);
+        playList.addSongToPlaylist(1,1);
+        playList.addSongToPlaylist(1,2);
+        playList.addSongToPlaylist(1,3);
+        playList.addSongToPlaylist(2,1);
+        playList.addSongToPlaylist(2,2);
     }
-
 
 }

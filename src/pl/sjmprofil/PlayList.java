@@ -52,6 +52,19 @@ public class PlayList {
         return false;
     }
 
+    public boolean addSongToPlaylist(int albumNumber, int songNumber){
+        Album album = findAlbum(albumNumber);
+        if(album != null){
+            Song song = album.findSong(songNumber);
+            if(song != null){
+                userPlayList.add(song);
+                System.out.println(song.getTitle() + " " + song.getDuration() + " Added to playlist");
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean printPlaylist(){
         if (!userPlayList.isEmpty()) {
             for (int i = 0; i < userPlayList.size(); i++) {

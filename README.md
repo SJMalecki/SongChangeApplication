@@ -1,5 +1,4 @@
 # SongChangeApplication
-Creating application that uses Lists and Iterator for learning puprose
-//TODO More options that enable removing songs and ablums. 
-//TODO "Song playback" (Iterator at LinkedList playlist)
+Creating application that uses Lists and Iterator for learning puprose 
+//TODO remove song form playlist option needed
 //TODO Handle exceptions

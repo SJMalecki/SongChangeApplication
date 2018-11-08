@@ -33,6 +33,32 @@ public class PlayList {
         return false;
     }
 
+
+    public boolean removeSongFromPlaylist(){
+        if(printPlaylist()){
+            System.out.println("Choose song to remove");
+            int songNumber = scanner.nextInt();
+            scanner.nextLine();
+            Song song = findSong(songNumber);
+            if(song != null){
+                System.out.println("Removing " + song.getTitle() + " " + song.getDuration());
+                userPlayList.remove(song);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Song findSong(int songNumber){
+        int index = songNumber - 1;
+        if(index >= 0 && index < userPlayList.size()){
+            return userPlayList.get(index);
+        }else{
+            System.out.println("Wrong number");
+            return null;
+        }
+    }
+
     public boolean addSongToPlaylist() {
         if (printAlbumList()) {
             System.out.println("Chose album: ");

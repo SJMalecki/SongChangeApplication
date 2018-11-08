@@ -130,15 +130,24 @@ public class Menu {
                 case 3:
                     playList.printPlaylist();
                     break;
+                case 4:
+                    if(listIterator.hasNext()){
+                        System.out.println("Song removed: " + listIterator.previous().getTitle());
+                        listIterator.remove();
+                        System.out.println("Now playing: " + listIterator.next().getTitle());
+                    }else if(listIterator.hasPrevious()){
+                        listIterator.previous();
+                        System.out.println("Song removed: " + listIterator.next().getTitle());
+                        listIterator.remove();
+                    }else{
+                        System.out.println("nothing to remove");
+                    }
+                    break;
                 default:
                     System.out.println("Invalid choice");
                     break;
-
             }
-
         }
-
-
     }
 
     public void creatingNewAlbumFromMenu() {
@@ -169,6 +178,7 @@ public class Menu {
                 "1 - To go to next song\n" +
                 "2 - To go to previous song\n" +
                 "3 - To print playlist\n" +
+                "4 - To remove song form playlist\n" +
                 "Chose: ");
     }
 

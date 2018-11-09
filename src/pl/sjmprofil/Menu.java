@@ -120,9 +120,9 @@ public class Menu {
                         goingForward = false;
                     }
 
-                    if(listIterator.hasPrevious()){
+                    if (listIterator.hasPrevious()) {
                         System.out.println("Now playing: " + listIterator.previous().getTitle());
-                    }else{
+                    } else {
                         System.out.println("Reached beginning of the list");
                         goingForward = true;
                     }
@@ -131,15 +131,16 @@ public class Menu {
                     playList.printPlaylist();
                     break;
                 case 4:
-                    if(listIterator.hasNext()){
-                        System.out.println("Song removed: " + listIterator.previous().getTitle());
+                    if (playList.getUserPlayList().size() > 0) {
                         listIterator.remove();
-                        System.out.println("Now playing: " + listIterator.next().getTitle());
-                    }else if(listIterator.hasPrevious()){
-                        listIterator.previous();
-                        System.out.println("Song removed: " + listIterator.next().getTitle());
-                        listIterator.remove();
-                    }else{
+                        if (listIterator.hasNext()) {
+                            System.out.println("Now playing: " + listIterator.next().getTitle());
+                        } else if (listIterator.hasPrevious()) {
+                            System.out.println("Now playing: " + listIterator.previous().getTitle());
+                        } else {
+                            System.out.println("nothing to remove");
+                        }
+                    } else {
                         System.out.println("nothing to remove");
                     }
                     break;

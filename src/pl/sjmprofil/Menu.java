@@ -144,6 +144,24 @@ public class Menu {
                         System.out.println("nothing to remove");
                     }
                     break;
+                case 5:
+                    if(goingForward){
+                        if(listIterator.hasPrevious()){
+                            System.out.println("Repeat - Now playing: " + listIterator.previous().getTitle());
+                            listIterator.next();
+                        }else if(listIterator.hasNext()){
+                            System.out.println("Repeat - Now playing: " + listIterator.next().getTitle());
+                        }
+                    }else{
+                        if(listIterator.hasNext()){
+                            System.out.println("Repeat - Now playing: " + listIterator.next().getTitle());
+                            listIterator.previous();
+                        }else if(listIterator.hasPrevious()){
+                            System.out.println("Repeat - Now playing: " + listIterator.previous().getTitle());
+
+                        }
+                    }
+                    break;
                 default:
                     System.out.println("Invalid choice");
                     break;
@@ -180,6 +198,7 @@ public class Menu {
                 "2 - To go to previous song\n" +
                 "3 - To print playlist\n" +
                 "4 - To remove song form playlist\n" +
+                "5 - To repeat song\n" +
                 "Chose: ");
     }
 

@@ -1,6 +1,7 @@
 package pl.sjmprofil;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Album {
@@ -32,9 +33,7 @@ public class Album {
     public boolean removeSong(){
         if(printAlbumSongList()){
             System.out.println("Choose song to remove");
-            int songNumber = scanner.nextInt();
-            scanner.nextLine();
-            Song song = findSong(songNumber);
+            Song song = findSong(integerScanner());
             if(song != null){
                 System.out.println("Removing " + song.getTitle() + " " + song.getDuration());
                 albumSongList.remove(song);
@@ -74,6 +73,17 @@ public class Album {
         }else
             System.out.println("Album is empty");
         return false;
+    }
+
+    public int integerScanner(){
+        while(true) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                return scanner.nextInt();
+            } catch (InputMismatchException ime) {
+                System.out.println("Wrong input, enter number again: ");
+            }
+        }
     }
 
     public String getAlbumTitle() {
